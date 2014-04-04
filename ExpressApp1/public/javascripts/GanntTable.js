@@ -41,6 +41,8 @@
             createRows(data,left_div,right_div);
         });
     };
+    // 
+    // 
     function createRows(data,left_div,right_div) {
         if (data != null) {
             var rows = data.length;

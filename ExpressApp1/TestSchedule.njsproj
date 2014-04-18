@@ -5,6 +5,11 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>TestSchedule</Name>
     <RootNamespace>ExpressApp7</RootNamespace>
+    <StartWebBrowser>True</StartWebBrowser>
+    <DebuggerPort>
+    </DebuggerPort>
+    <NodeExeArguments>
+    </NodeExeArguments>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,6 +38,7 @@
     <Compile Include="app.js" />
     <Compile Include="public\javascripts\GanntTable.js" />
     <Compile Include="routes\index.js" />
+    <Compile Include="routes\login.js" />
     <Compile Include="routes\schedule.js" />
     <Compile Include="routes\user.js" />
     <Content Include="package.json" />
@@ -41,6 +47,7 @@
     <Content Include="README.md" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
+    <Content Include="views\portal.jade" />
     <Content Include="views\schedule.jade" />
   </ItemGroup>
   <ItemGroup>

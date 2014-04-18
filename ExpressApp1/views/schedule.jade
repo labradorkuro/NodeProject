@@ -69,7 +69,10 @@ html
 						},
 					]
 				};
-				var schedule = [
+				var schedule = {
+					from: '2014/04/01 00:00:00',
+					to:   '2014/04/07 23:59:59',
+					data :[
 					{
 						name: "被験者A",
 						desc: "No.1",
@@ -94,13 +97,14 @@ html
 							}
 						]
 					}
-				];
+				]
+				};
 					
 
 				$.scheduleTable("scheduleTable_div1",data1);
 				$.scheduleTable("scheduleTable_div2",data2);
 				$.scheduleTable("scheduleTable_div3",data3);
-				$.ganntTable("ganntTable_div4",schedule);
+				ganntTable.Init("ganntTable_div4",schedule);
 				
 				/////
 				var gdata1 = [
@@ -177,7 +181,7 @@ html
 				//////
 			});
 	body
- 
+		div(class="titlebar")= title
 		div(id="tabs")
 			ul
 				li

@@ -2,6 +2,8 @@
 //(function ($) {
 
     var ganntTable =  ganntTable || {};
+	ganntTable.days = ['日','月','火','水','木','金','土'];
+	ganntTable.days_color = ['red','black','black','black','black','black','blue'];
     ganntTable.Init = function(id, schedule){
         $('#' + id).each(function(i){
             // 外枠
@@ -39,9 +41,11 @@
             $(right_top).append(right_top3);
 			// 表示対象日数の取得
             var dateCount = ganntTable.createCalendar(schedule.from, schedule.to);
+			// 日付表示行の生成
+			ganntTable.createCalendarHeader(schedule,right_top1,right_top2,right_top3,dateCount);
+			// スケジュール表示行の生成
             ganntTable.createRows(schedule,left_div,right_div,dateCount);
 
-            $(right_top1).append("<span>" + dateCount + "</span>");
         });
     };
 
@@ -52,8 +56,76 @@
         return d;
     };
 
+	ganntTable.createCalendarHeader = function(schedule,right_top1,right_top2,right_top3,dateCount) {
+        if (schedule != null) {
+			var startDate = ganntTable.dateStringToDate(schedule.from);
+			// 表示日付を年月日毎に文字列分割
+			var sd = ganntTable.splitDateString(schedule.from);
+			var ed = ganntTable.splitDateString(schedule.to);
+			// 年の表示
+			var y = startDate.getFullYear();
+			var yy = 1;
+			for(var j = 1;j < dateCount;j++) {
+				var nextDate = new Date(startDate.getTime() + ((24 * 3600 * 1000) * j));
+				if (y === nextDate.getFullYear()) {
+					yy++;
+				}
+				else break;
+			}
+			
+			var year_div1 = $('<div class="gt_cal_header" id="year_1">' + sd[0] + '年</>');
+			var w1 = 100 * yy;
+			$(year_div1).css("left","0px");
+			$(year_div1).css("width", w1 + "px");
+			$(right_top1).append(year_div1);
+			var w2 = 100 * (dateCount - yy);
+			if (w2 > 0) {
+				var year_div2 = $('<div class="gt_cal_header" id="year_2">' + ed[0] + '年</>');
+				$(year_div2).css("left",w1 + "px");
+				$(year_div2).css("width", w2 + "px");
+				$(year_div2).css("border-left", "1px solid #777777");
+				$(right_top1).append(year_div2);
+			}
+			// 月の表示
+			var m = startDate.getMonth();
+			var mm = 1;
+			for(var j = 1;j < dateCount;j++) {
+				var nextDate = new Date(startDate.getTime() + ((24 * 3600 * 1000) * j));
+				if (m === nextDate.getMonth()) {
+					mm++;
+				}
+				else break;
+			}
+			
+			var month_div1 = $('<div class="gt_cal_header" id="month1">' + (m + 1) + '月</>');
+			w1 = 100 * mm;
+			$(month_div1).css("left","0px");
+			$(month_div1).css("width", w1 + "px");
+			$(right_top2).append(month_div1);
+			w2 = 100 * (dateCount - mm);
+			if (w2 > 0) {
+				var month_div2 = $('<div class="gt_cal_header" id="month2">' + (m + 2) + '月</>');
+				$(month_div2).css("left",w1 + "px");
+				$(month_div2).css("width", w2 + "px");
+				$(month_div2).css("border-left", "1px solid #777777");
+				$(right_top2).append(month_div2);
+			}
+			// 日の表示
+			for(var j = 0;j < dateCount;j++) {
+				var nextDate = new Date(startDate.getTime() + ((24 * 3600 * 1000) * j));
+				var date_div = $('<div class="gt_cal_header" >' + nextDate.getDate() + '日(' + ganntTable.days[nextDate.getDay()] + ')</>');
+				$(date_div).css("left",(j * 100) + "px");
+				$(date_div).css("width", "100px");
+				$(date_div).css("color", ganntTable.days_color[nextDate.getDay()]);
+				if (j > 0)
+					$(date_div).css("border-left", "1px solid #777777");
+				$(right_top3).append(date_div);
+			}
+        }
+	};
+
     // 
-    // 
+    // 試験スケジュールのガントチャートを表示する行の生成
     ganntTable.createRows = function(schedule,left_div,right_div,dateCount) {
         if (schedule != null) {
 
@@ -64,7 +136,7 @@
                 var left_row = $("<div class='gt_left_row_div'></div>");
                 $(left_div).append(left_row);
                 $(left_row).append("<div class='gt_category1_div'>" + data[i].name + "</div>");
-                $(left_row).append("<div class='gt_category2_div'><span style='position:relative;top:-24px;'>" + data[i].desc + "</span></div>");
+                $(left_row).append("<div class='gt_category2_div'>" + data[i].desc + "</div>");
 				// 右側
                 var right_row = $("<div class='gt_right_row_div'></div>");
                 $(right_div).append(right_row);
@@ -89,5 +161,9 @@
         d = Math.floor((d / (24 * 3600 * 1000)) + 1);
         return d;
     };
-
+	ganntTable.splitDateString = function(dateString) {
+		var ymd = new Array();
+		ymd = dateString.split("/");
+		return ymd;
+	};
 //})(jQuery);

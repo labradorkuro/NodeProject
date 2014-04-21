@@ -70,16 +70,16 @@ html
 					]
 				};
 				var schedule = {
-					from: '2014/04/01 00:00:00',
-					to:   '2014/04/07 23:59:59',
+					from: '2014/05/07',
+					to:   '2014/05/13',
 					data :[
 					{
 						name: "被験者A",
-						desc: "No.1",
+						desc: "検体No.1",
 						values: [
 							{
-							from: new Date(2014,3,1,9,0,0),
-							to: new Date(2014,3,4,17,0,0),
+							from: '2014/05/07',
+							to: '2014/05/09',
 							label: "試験001",
 							customClass: "ganttRed",
 							}
@@ -90,8 +90,20 @@ html
 						desc: "検体No.2",
 						values: [
 							{
-							from: new Date(2014,3,1,9,0,0),
-							to: new Date(2014,3,4,17,0,0),
+							from: '2014/05/12,
+							to: '2014/05/14,
+							label: "試験002",
+							customClass: "ganttRed",
+							}
+						]
+					},
+					{
+						name: "",
+						desc: "検体No.3",
+						values: [
+							{
+							from: '2014/05/07',
+							to: '2014/05/09',
 							label: "試験002",
 							customClass: "ganttRed",
 							}
@@ -104,6 +116,7 @@ html
 				$.scheduleTable("scheduleTable_div1",data1);
 				$.scheduleTable("scheduleTable_div2",data2);
 				$.scheduleTable("scheduleTable_div3",data3);
+				ganntTable.Init("ganntTable_div1",schedule);
 				ganntTable.Init("ganntTable_div4",schedule);
 				
 				/////
@@ -181,7 +194,9 @@ html
 				//////
 			});
 	body
-		div(class="titlebar")= title
+		div(class="titlebar")
+			img(class="titlebar_logo" src="images/drc_logo.jpg")
+			span= title
 		div(id="tabs")
 			ul
 				li
@@ -194,7 +209,7 @@ html
 					a(href="#tabs-4") 食品ヒト試験
 			div(id="tabs-1")
 				p (パッチテスト・RIPT)化粧品・医薬部外品の安全性試験
-				div(id="scheduleTable_div1")
+				div(id="ganntTable_div1")
 			div(id="tabs-2")
 				p in vivo（ヒト臨床試験）による測定
 				div(id="scheduleTable_div2")

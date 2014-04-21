@@ -22,17 +22,26 @@ div.titlebar {
     left: 0px;
     top: 0px;
     width: 100%;
-    height: 2em;
+    height: 40px;
     padding-top:0.75em;
-    background-color:darkgreen;
-    font-size:small;
-    color:white;
+    background-color:white;
+    font-size:large;
+    font-weight:bold;
+    color:darkolivegreen;
     text-align:center;
+}
+img.titlebar_logo {
+    position:absolute;
+    float:left;
+    left:10px;
+    top:2px;
+    width:150px;
+    height:40px;
 }
 div.gannt_table {
     position:relative;
-    border:1px #4cff00 solid;
-    width:960px;
+    border:1px #777777 solid;
+    width:946px;
     height:600px;
     font-size:small;
 }
@@ -42,7 +51,7 @@ div.gt_left_div {
     border-top: none;
     border-bottom: none;
     border-left: none;
-    border-right: 1px #4cff00 solid;
+    border-right: 1px #777777 solid;
     width: 240px;
     height: 600px;
 }
@@ -50,7 +59,7 @@ div.gt_left_div {
 div.gt_left_top_div {
     position:relative;
     border-top:none;
-    border-bottom:1px #4cff00 solid;
+    border-bottom:1px #777777 solid;
     border-left:none;
     border-right:none;
     width:240px;
@@ -61,11 +70,11 @@ div.gt_left_top1_div {
     position:relative;
     top:0px;
     border-top:none;
-    border-bottom:1px #4cff00 solid;
+    border-bottom:1px #777777 solid;
     border-left:none;
     border-right:none;
     width:240px;
-    height:4.0em;
+    height:4.1em;
     
 }
 div.gt_left_top2_div {
@@ -89,7 +98,7 @@ div.gt_right_div {
     border-bottom: none;
     border-left: none;
     border-right: none;
-    width: 720px;
+    width: 707px;
     height: 600px;
     //background-color:#00ff90;
 }
@@ -97,10 +106,10 @@ div.gt_right_top_div {
 
     position:relative;
     border-top:none;
-    border-bottom:1px #4cff00 solid;
+    border-bottom:1px #777777 solid;
     border-left:none;
     border-right:none;
-    width:720px;
+    width:707px;
     height:6em;
 
 }
@@ -108,10 +117,10 @@ div.gt_right_top1_div {
     position:relative;
     top:0px;
     border-top:none;
-    border-bottom:1px #4cff00 solid;
+    border-bottom:1px #777777 solid;
     border-left:none;
     border-right:none;
-    width:720px;
+    width:707px;
     height:2em;
     
 }
@@ -119,10 +128,10 @@ div.gt_right_top2_div {
     position:relative;
     top:0px;
     border-top:none;
-    border-bottom:1px #4cff00 solid;
+    border-bottom:1px #777777 solid;
     border-left:none;
     border-right:none;
-    width:720px;
+    width:707px;
     height:2em;
 
 }
@@ -133,35 +142,38 @@ div.gt_right_top3_div {
     border-bottom:none;
     border-left:none;
     border-right:none;
-    width:720px;
+    width:707px;
     height:2em;
 
 }
 
 div.gt_category1_div {
     float:left;
-    position:relative;
+    position:absolute;
     top:0px;
     border-top:none;
     border-bottom:none;
     border-left:none;
-    border-right:1px #4cff00 solid;
     width:120px;
     height:2em;
-    
+    font-weight:bold;
+    padding-left:4px;
+    padding-top:0.25em;
 }
 
 div.gt_category2_div {
-    position:relative;
+    position:absolute;
     top:0px;
     left:120px;
-    padding:2px;
     border-top:none;
     border-bottom:none;
-    border-left:none;
+    border-left:1px #777777 solid;
     border-right:none;
     width:120px;
     height:2em;
+    font-weight:bold;
+    padding-top:0.25em;
+    padding-left:4px;
 
 }
 
@@ -169,7 +181,7 @@ div.gt_left_row_div {
     position:relative;
     top:0px;
     border-top:none;
-    border-bottom:1px #4cff00 solid;
+    border-bottom:1px #777777 solid;
     border-left:none;
     border-right:none;
     width:240px;
@@ -180,13 +192,28 @@ div.gt_right_row_div {
     position:relative;
     top:0px;
     border-top:none;
-    border-bottom:1px #4cff00 solid;
+    border-bottom:1px #777777 solid;
     border-left:none;
     border-right:none;
-    width:720px;
+    width:707px;
     height:2em;
 
 }
+div.gt_cal_header {
+    position:absolute;
+    float:left;
+    top:0px;
+    left:0px;
+    font-size:1em;
+    width:100px;
+    height:1.5em;
+    padding-top:0.25em;
+    margin-top:2px;
+    margin-left:0px;
+    text-align:center;
+    font-weight:bold;
+}
+
 a.gt_button {
     position:absolute;
     float:left;

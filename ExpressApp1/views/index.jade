@@ -4,7 +4,9 @@ block head
   link(rel="stylesheet" ,href="stylesheets/schedule.css")
 
 block content
-  div(class="titlebar")= title
+  div(class="titlebar")
+    img(class="titlebar_logo" src="images/drc_logo.jpg")
+    span= title
   div(style="padding-top:50px")
     form(method="POST" action="login")
         table(class="login_table")
